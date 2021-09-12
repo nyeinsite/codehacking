@@ -11,6 +11,22 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
+mix.js('resources/js/app.js')
+    .scripts([
+        'libs/bootstrap.js',
+        'libs/jquery.js',
+        'libs/metisMenu.js',
+        'libs/sb-admin-2.js',
+        'libs/script.js',
+    ], './public/js/libs.js')
     .vue()
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss')
+    .styles([
+        'libs/blog-post.css',
+        'libs/bootstrap.css',
+        'libs/font-awesome.css',
+        'libs/metisMenu.css',
+        'libs/sb-admin-2.css',
+        'libs/style.css'
+    ], './public/css/libs.css');
+
