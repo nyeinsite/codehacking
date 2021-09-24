@@ -25,7 +25,11 @@ Route::get('/role',function (){
     $user=App\Models\User::find(1);
     return $user->role;
 });
-Route::resource('/admin/users',App\Http\Controllers\AdminUsersController::class);
+
+Route::group(['middleware'=>'admin'],function(){
+    Route::resource('/admin/users',App\Http\Controllers\AdminUsersController::class);
+    Route::resource('/admin/posts',App\Http\Controllers\AdminPostsController::class);
+});
 
 Route::get('/admin',function (){
     return view('admin.index');

@@ -7,6 +7,8 @@ use App\Http\Requests\UsersUpdateRequest;
 use App\Models\Photo;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Support\Facades\Session;
+
 class AdminUsersController extends Controller
 {
     /**
@@ -51,6 +53,7 @@ class AdminUsersController extends Controller
             $input['photo_id']=$photo->id;}
         $input['password']=bcrypt($request->password);
         User::create($input);
+        return redirect('/admin/users');
     }
 
     /**
@@ -107,7 +110,12 @@ $user->update($input);
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
+
     {
-        //
+        $user=User::findOrFail($id);
+        unlink(public_path().$user->photo->file);
+    $user->delete();
+       Session::flash('deleted_user','user has been successfully deleted');
+       return redirect('/admin/users');
     }
 }
