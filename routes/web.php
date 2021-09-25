@@ -30,6 +30,8 @@ Route::group(['middleware'=>'admin'],function(){
     Route::resource('/admin/users',App\Http\Controllers\AdminUsersController::class);
     Route::resource('/admin/posts',App\Http\Controllers\AdminPostsController::class);
     Route::resource('/admin/categories',App\Http\Controllers\AdminCategoriesController::class);
+    Route::resource('/admin/media',App\Http\Controllers\AdminMediasController::class);
+
 });
 
 Route::get('/admin',function (){
