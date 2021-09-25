@@ -22,7 +22,7 @@
             @foreach($posts as $post)
                 <td>{{$post->id}}</td>
                 <td><img height="100" src="{{$post->photo?$post->photo->file:"http://placehold.it"}}"></td>
-                <td>{{$post->user->name}}</td>
+                <td><a href="posts/{{$post->id}}/edit">{{$post->user->name}}</a></td>
                 <td>{{$post->category?$post->category->name:"Uncategorize"}}</td>
                 <td>{{$post->title}}</td>
                 <td>{{$post->body}}</td>
